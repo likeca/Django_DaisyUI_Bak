@@ -24,7 +24,9 @@ dependencies = [
     "google-auth-oauthlib>=1.2.2",       # Google OAuth2 Library for Python
     "google-auth-httplib2>=0.2.0",       # Google HTTP Client Library for Python
 
-    "django-tailwind>=0.4.2", # Tailwind CSS integration for Django
+    "django-tailwind>=0.4.2",   # Tailwind CSS integration for Django
+    "django-crispy-forms>=2.4", # Best way to have Django forms look and behave beautifully
+    "crispy-daisyui>=0.7.0",    # DaisyUI plugin for Crispy Forms
 
     "graphene-django>=3.2.3", # GraphQL support for Django
     "hashids>=1.3.1",         # Hashids is a small open-source library that generates short, unique, non-sequential ids from numbers

@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-# from crispy_forms.helper import FormHelper
-# from crispy_forms.layout import Layout, Submit, Field, HTML
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Field, HTML
 
 from allauth.account.forms import SignupForm, LoginForm, PasswordField
 from django_recaptcha.fields import ReCaptchaField
@@ -32,14 +32,15 @@ class ContactForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
-        # self.helper = FormHelper()
+        self.helper = FormHelper()
         self.helper.form_tag = False
 
-        # self.helper.layout = Layout(
-        #     Field('from_email'),
-        #     Field('subject'),
-        #     Field('message'),
-        #     HTML(
-        #         '<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">'),
-        #     Submit('sent', _('Send'), css_class='btn-primary submit_button'),
-        # )
+        self.helper.layout = Layout(
+            Field("from_email"),
+            Field("subject"),
+            Field("message"),
+            HTML(
+                '<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">'
+            ),
+            Submit("sent", _("Send"), css_class="btn-primary submit_button"),
+        )

@@ -1,8 +1,8 @@
 {% load i18n %}
 
 <li>
-    <a {% if active_link == "dashboard" %}  class="active" {% else %} class="nav-link" {% endif %} href="{% url 'tenants:dashboard' %}">{% trans "Tenant Dashboard" %}</a>
+    <a {% if active_link == "dashboard" %}class="active"{% endif %} href="{% url 'tenants:dashboard' %}">{% trans "Tenant Dashboard" %}</a>
 </li>
 <li>
-    <a {% if active_link == "about" %}  class="active" {% else %} class="nav-link" {% endif %} href="{% url 'about' %}">{% trans "About" %}</a>
+    <a {% if active_link == "about" %}class="active"{% else %}class="inactive"{% endif %} href="{% url 'about' %}">{% trans "About" %}</a>
 </li>

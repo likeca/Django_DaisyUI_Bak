@@ -3,9 +3,11 @@
 @plugin "daisyui" {
   /* themes: light --default, dark --prefersdark; */
   themes: light --default;
-}
+};
 
-;
+.btn:active {
+  color: red
+}
 
 /**
   * A catch-all path to Django template files, JavaScript, and Python files
