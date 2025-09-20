@@ -42,7 +42,7 @@
           <img src="{% static 'site/img/logo.svg' %}" alt="logo" loading="lazy" class="h-8" />
           <a href="{% url "home" %}" class="ms-3">{% include "_brandname.html" %}</a>
 
-          <ul class="menu menu-horizontal">
+          <ul class="menu menu-horizontal text-base max-md:hidden">
             {% block navbar_left %}
             {% endblock navbar_left %}
           </ul>
@@ -74,34 +74,20 @@
               </svg>
             </div>
           </button>
-          <div class="dropdown dropdown-end">
+          <div class="dropdown dropdown-end md:hidden">
             <div tabindex="0" role="button" class="btn btn-ghost hover:bg-transparent border-0 active:bg-transparent">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
 
             </div>
-            <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-lg">
               {% block navbar_right %}
               {% endblock navbar_right %}
             </ul>
           </div>
         </div>
       </nav>
-
-
-      {% comment %} <nav id="navbar" class="fixed w-full bg-white top-0 animated transition duration-1000 ease-in-out">
-        <div class="navbar-start shadow-sm min-h-0 h-12">
- 
-        </div>
-
-        <div class="navbar-end me-3">
-
-        </div>
-      </div>
-
-
-      </nav> {% endcomment %}
     {% endblock navbar %}
 
     {% block messages %}
