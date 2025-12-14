@@ -27,6 +27,7 @@
                 "0.0.0.0:8000"
             ],
             "env": {
+                "NPM_BIN_PATH": "/Users/patrick/.nvm/versions/node/v22.18.0/bin/npm",
                 "DJANGO_ENVIRONMENT": "Development"
             },
             "django": true
