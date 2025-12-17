@@ -15,20 +15,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="language" content="English" />
-    <meta name="keywords" content="{% block keywords %} django_tw keywords. {% endblock keywords %}" />
+    <meta name="keywords" content="{% block keywords %}django_tw keywords.{% endblock keywords %}" />
     <meta name="description" content="{% block description %}django_tw description.{% endblock description %}" />
     <link rel="shortcut icon" href="{% static 'site/ico/favicon.ico' %}" />
     {% tailwind_css %}
-
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_MEASUREMENT_ID }}"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
-        gtag("config", "{{ GOOGLE_MEASUREMENT_ID }}");
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "{{ GOOGLE_MEASUREMENT_ID }}");
     </script>
 
     {% block extra_head_script %}
@@ -37,10 +35,14 @@
   <body>
     <div id="language" class="hidden">{{ LANGUAGE_CODE }}</div>
     {% block navbar %}
-      <nav id="navbar" class="navbar fixed w-full top-0 animated transition bg-base-200 duration-1000 ease-in-out min-h-0 h-12">
+      <nav id="navbar" class="navbar fixed w-full top-0 animated transition bg-base-200 duration-1000 ease-in-out min-h-0 h-16">
         <div class="navbar-start">
-          <img src="{% static 'site/img/logo.svg' %}" alt="logo" loading="lazy" class="h-8" />
-          <a href="{% url "home" %}" class="ms-3">{% include "_brandname.html" %}</a>
+          <div>
+            <a href="{% url "home" %}" class="flex ms-3">
+              <img src="{% static 'site/img/logo.svg' %}" alt="logo" loading="lazy" class="h-8" />
+              <span class="ms-3 py-1 max-md:hidden">{% include "_brandname.html" %}</span>
+            </a>
+          </div>
 
           <ul class="menu menu-horizontal text-base max-md:hidden">
             {% block navbar_left %}
@@ -74,18 +76,62 @@
               </svg>
             </div>
           </button>
-          <div class="dropdown dropdown-end md:hidden">
-            <div tabindex="0" role="button" class="btn btn-ghost hover:bg-transparent border-0 active:bg-transparent">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-
-            </div>
-            <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-lg">
-              {% block navbar_right %}
-              {% endblock navbar_right %}
-            </ul>
+            
+          <div class="mx-3">
+            {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if user.profile.avatar %}
+                            <img src="{{ MEDIA_URL }}{{ user.profile.avatar }}" alt="avatar" width="30" height="30" style="border-radius: 50%; margin-top:-3px;"> {{ user.get_username|truncatechars:20 }}
+                        {% else %}
+                            <img src="{% static 'site/img/profile/default.png' %}" alt="avatar" width="30" height="30" style="border-radius: 50%; margin-top:-3px;"> {{ user.get_username|truncatechars:20 }}
+                        {% endif%}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'profiles:show_self' %}">My Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <button type="button" class="btn btn-primary btn-md fw-bold" onclick="location.href = '{% url 'account_login' %}';">{% trans "Sign in" %}</button>
+            {% endif %}
           </div>
+
+          <form action="{% url 'set_language' %}" method="post" class="ms-3 me-10">
+              {% csrf_token %}
+              <input name="country" type="hidden" value="/" class="focus:outline-none" />
+              <select class="select w-auto fw-bold" name="language" onchange="this.form.submit()">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for language in languages %}
+                      <option class="fw-bold" value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected="selected"{% endif %}>
+                          <span>
+                              {% if language.code == "en" %}🇺🇸{% endif %}
+                              {% if language.code == "fr" %}🇫🇷{% endif %}
+                              {% if language.code == "zh-hans" %}🇨🇳{% endif %}
+                          </span>
+                          {{ language.name_local|capfirst }}</a>
+                      </option>
+                  {% endfor %}
+              </select>
+          </form>    
+
+        <div class="dropdown dropdown-end md:hidden">
+          <div tabindex="0" role="button" class="btn btn-ghost hover:bg-transparent border-0 active:bg-transparent">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+
+          </div>
+          <ul tabindex="0" class="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-lg">
+            {% block navbar_right %}
+            {% endblock navbar_right %}
+          </ul>
+        </div>        
         </div>
       </nav>
     {% endblock navbar %}

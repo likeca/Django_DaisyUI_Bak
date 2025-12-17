@@ -190,7 +190,7 @@ python manage.py showmigrations
 # Create a Tailwind CSS compatible Django app "theme"
 python manage.py tailwind init
 
-# Install Tailwind CSS dependencies
+# Install Tailwind CSS dependencies - cross-env
 python manage.py tailwind install
 
 # Start only the Tailwind watcher, also need to run "python manage.py runserver"
@@ -208,3 +208,6 @@ python manage.py tailwind update
 
 # Icons
 [Heroicons](https://heroicons.com/)
+
+# DaisyUI
+[DaisyUI Component](https://daisyui.com/components/)
