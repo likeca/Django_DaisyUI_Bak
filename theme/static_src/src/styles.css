@@ -4,6 +4,12 @@
   themes: light --default, dark --prefersdark;
 };
 
+@plugin "daisyui/theme" {
+  name: "light";
+  --color-primary: #609AEF;    /* Change main brand color */
+  --color-base-100: #ffffff;   /* Change page background */
+}
+
 /* .btn:active {
   color: red
 } */
