@@ -489,7 +489,7 @@ requires-dist = [
     { name = "dj-rest-auth", specifier = ">=7.0.1" },
     { name = "django", specifier = "==5.2.9" },
     { name = "django-allauth", specifier = "==65.4.0" },
-    { name = "django-compressor", specifier = ">=4.5.1" },
+    { name = "django-compressor", specifier = ">=4.6.0" },
     { name = "django-countries", specifier = ">=8.2.0" },
     { name = "django-crispy-forms", specifier = ">=2.5" },
     { name = "django-dbbackup", specifier = ">=5.1.0" },

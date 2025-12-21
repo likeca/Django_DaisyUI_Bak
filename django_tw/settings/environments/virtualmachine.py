@@ -17,7 +17,7 @@ MEDIA_ROOT = "/usr/share/nginx/html/media/"
 # # Django Compressor for css and javascript
 # # No new files are generated during a request in production
 # COMPRESS_OFFLINE = True
-# COMPRESS_ENABLED = True
+COMPRESS_ENABLED = True
 
 # Cache the templates in memory for speed-up
 loaders = [

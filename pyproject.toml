@@ -16,9 +16,9 @@ dependencies = [
     "dj-rest-auth>=7.0.1",         # Django REST Authentication (django-allauth and djangorestframework)
     "psycopg[binary]>=3.3.2",      # PostgreSQL database adapter for Python
     # "PyJWT>=2.10.1",               # JSON Web Tokens (JWT) encode and decode 
-    "jwt",                         # JSON Web Token Authentication
+    "jwt", # JSON Web Token Authentication
 
-    "django-compressor>=4.5.1", # Django Compressor Compress CSS and JS, $ pip install rcssmin --install-option="--without-c-extensions"
+    "django-compressor>=4.6.0", # Django Compressor Compress CSS and JS, $ pip install rcssmin --install-option="--without-c-extensions"
     # "django-libsass>=0.9",      # Django Libsass is a Django app that provides a template tag for compiling Sass stylesheets# Django Compressor compile scss to css
 
     "google-api-python-client>=2.187.0", # Google API client library for Python
