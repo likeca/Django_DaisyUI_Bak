@@ -4,10 +4,10 @@
 {% load static %}
 
 {% block content %}
-  <div class="card bg-base-100 mx-auto mt-20 text-center w-150 shadow-lg">
-    <div class="card-body text-center m-5">
+  <div class="card bg-base-100 mx-auto mt-30 text-center w-150 shadow-lg">
+    <div class="card-body">
       <div class="flex justify-center font-bold">
-        <img src="{% static 'site/img/logo.png' %}" class="text-center w-30" />
+        <img src="{% static 'site/img/logo.png' %}" class="w-30" />
       </div>
       <div class="flex justify-center font-bold text-3xl">django_tw.com</div>
       <div class="m-5 text-2xl font-bold">
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="p-20">
+    <div class="px-20 pb-20">
       {% block auth_content %}
 
       {% endblock %}
