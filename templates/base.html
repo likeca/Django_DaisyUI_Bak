@@ -101,8 +101,8 @@
 
           <form action="{% url 'set_language' %}" method="post" class="ms-1 w-30 max-md:hidden">
               {% csrf_token %}
-              <input name="country" type="hidden" value="/" class="focus:outline-none" />
-              <select class="rounded-2xl select fw-bold w-30" name="language" onchange="this.form.submit()">
+              <input name="country" type="hidden" value="/" class="focus:outline-none focus:ring-0" />
+              <select class="rounded-xl select fw-bold w-30 border-0" name="language" onchange="this.form.submit()">
                   {% get_current_language as LANGUAGE_CODE %}
                   {% get_available_languages as LANGUAGES %}
                   {% get_language_info_list for LANGUAGES as languages %}
