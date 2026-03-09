@@ -212,3 +212,14 @@ python manage.py tailwind update
 # DaisyUI
 [DaisyUI Component](https://daisyui.com/components/)
 [aisyUI Components](https://willpinha.github.io/daisy-components/)
+
+# Django DaisyUI
+https://github.com/hypy13/django-daisy
+
+
+Daisy UI Admin Dashboard Template
+https://github.com/robbins23/daisyui-admin-dashboard-template
+https://github.com/robbins23/admin-dashboard-nextjs-typescript-daisyui-template?tab=readme-ov-file
+
+# DaisyUI Icons
+https://heroicons.com/outline
